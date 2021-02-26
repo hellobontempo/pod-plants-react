@@ -1,25 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import PlantContainer from './PlantContainer'
+import React from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  
+  state = { //always equal to object
+    displayPlants: false
+  }
+  render(){
+    return (
+      <div className="App">
+        <header className="App-header">
+          <button onClick={this.showPlants} >View Plants</button>
+            {this.state.displayPlants && < PlantContainer /> } 
+        </header>
+      </div>
+    );}
+
+  showPlants = () => { //used in an event listener, so arrow function
+    this.setState({
+      displayPlants: true
+    })
+  }
+
 }
 
 export default App;
